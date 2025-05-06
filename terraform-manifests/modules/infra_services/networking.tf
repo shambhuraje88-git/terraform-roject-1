@@ -51,3 +51,4 @@ resource "aws_subnet" "terraform_public_test_subnet" {
   count                   = 2
   //count                   = length(var.public_cidrs)
 
+}
