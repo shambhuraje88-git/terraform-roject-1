@@ -10,7 +10,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "aws-d-testbucket"
+    bucket = "aws-drx-testbucket"
     key    = "terraformstates/dev.tfstate"
     region = "ap-south-1"
   }
