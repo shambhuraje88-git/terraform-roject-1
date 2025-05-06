@@ -49,6 +49,12 @@ resource "aws_default_route_table" "terraform_private_rt" {
 
 resource "aws_subnet" "terraform_public_test_subnet" {
   count                   = 2
-  //count                   = length(var.public_cidrs)
+  vpc_id                  = aws_vpc.terraform_test_vpc.id  # This line is required
+  cidr_block              = var.public_cidrs[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  map_public_ip_on_launch = true
 
+  tags = {
+    Name = "${var.cloud_env}_terraform_public_subnet_${count.index}"
+  }
 }
